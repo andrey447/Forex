@@ -15,9 +15,9 @@
         </Grid.ColumnDefinitions>
         <Calendar HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top" Height="167" Width="181"/>
         <Label Content="Часы:" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top"/>
-        <Slider HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Width="227" Maximum="23" SmallChange="1" Value="8" Background="Transparent" TickPlacement="BottomRight"/>
+        <Slider x:Name="sliderHours" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Width="227" Maximum="23" SmallChange="1" Value="8" Background="Transparent" TickPlacement="BottomRight"/>
         <Label Content="Минуты:" HorizontalAlignment="Left" Margin="10,245,0,0" VerticalAlignment="Top"/>
-        <Slider HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Width="227" Maximum="59" SmallChange="5" Background="Transparent" TickPlacement="BottomRight" TickFrequency="5" LargeChange="5"/>
+        <Slider x:Name="sliderMinutes" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" Width="227" Maximum="59" SmallChange="5" Background="Transparent" TickPlacement="BottomRight" TickFrequency="5" LargeChange="5"/>
         <CheckBox Content="Открывать противоположные сделки" HorizontalAlignment="Left" Margin="10,310,0,0" VerticalAlignment="Top"/>
         <Slider HorizontalAlignment="Left" Margin="10,361,0,0" VerticalAlignment="Top" Width="227" Maximum="5" Minimum="1" SmallChange="0.25" TickPlacement="BottomRight" Value="2"/>
         <Label Content="Мультипликатор:" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" RenderTransformOrigin="-3.585,-0.869"/>

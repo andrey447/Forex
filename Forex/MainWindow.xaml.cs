@@ -42,7 +42,7 @@ namespace Forex
             excel_app.Visible = true;
 
             // Откройте рабочую книгу только для чтения.
-            Excel.Workbook workbook = excel_app.Workbooks.Open(@"C:\Users\andre\OneDrive\Рабочий стол\File1.xlsx",
+            Excel.Workbook workbook = excel_app.Workbooks.Open(@"C:\Users\andre\OneDrive\Рабочий стол\GBPUSD_M5.xlsx",
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing,
                 Type.Missing, Type.Missing, Type.Missing, Type.Missing,
@@ -50,20 +50,68 @@ namespace Forex
 
             // Получить первый рабочий лист.
             Excel.Worksheet sheet = (Excel.Worksheet)workbook.Sheets[1];
-
+            
+            string[,] dataArray = new string[100,7];
+            int dataArraySize = 100;
+            
             // Указываем номер столбца (таблицы Excel) из которого будут считываться данные.
-            int numCol = 2;
-
+            int numCol = 1;
             Excel.Range usedColumn = sheet.UsedRange.Columns[numCol];
             Array myvalues = (Array)usedColumn.Cells.Value2;
             string[] strArray = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();
-            double[] dataArray = new double[strArray.Length];
+            for (int i = 0; i < dataArraySize; i++)
+                dataArray[i,0] = strArray[i];
 
-            for (int i=0; i<strArray.Length; i++)
-            {
-                dataArray[i] = Convert.ToDouble(strArray[i]);
-                MessageBox.Show(dataArray[i].ToString());
-            }
+            numCol = 2;
+            usedColumn = sheet.UsedRange.Columns[numCol];
+            myvalues = (Array)usedColumn.Cells.Value2;
+            strArray = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();
+            for (int i = 0; i < dataArraySize; i++)
+                dataArray[i, 1] = strArray[i];
+
+            numCol = 3;
+            usedColumn = sheet.UsedRange.Columns[numCol];
+            myvalues = (Array)usedColumn.Cells.Value2;
+            strArray = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();
+            for (int i = 0; i < dataArraySize; i++)
+                dataArray[i, 2] = strArray[i];
+
+            numCol = 4;
+            usedColumn = sheet.UsedRange.Columns[numCol];
+            myvalues = (Array)usedColumn.Cells.Value2;
+            strArray = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();
+            for (int i = 0; i < dataArraySize; i++)
+                dataArray[i, 3] = strArray[i];
+
+            numCol = 5;
+            usedColumn = sheet.UsedRange.Columns[numCol];
+            myvalues = (Array)usedColumn.Cells.Value2;
+            strArray = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();
+            for (int i = 0; i < dataArraySize; i++)
+                dataArray[i, 4] = strArray[i];
+
+            numCol = 6;
+            usedColumn = sheet.UsedRange.Columns[numCol];
+            myvalues = (Array)usedColumn.Cells.Value2;
+            strArray = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();
+            for (int i = 0; i < dataArraySize; i++)
+                dataArray[i, 5] = strArray[i];
+
+            numCol = 7;
+            usedColumn = sheet.UsedRange.Columns[numCol];
+            myvalues = (Array)usedColumn.Cells.Value2;
+            strArray = myvalues.OfType<object>().Select(o => o.ToString()).ToArray();
+            for (int i = 0; i < dataArraySize; i++)
+                dataArray[i, 6] = strArray[i];
+
+            int n = (int)sliderHours.Value * 12 + (int)sliderMinutes.Value / 5 + 1;
+            MessageBox.Show(dataArray[n, 5]);
+
+            //for (int i = 0; i < dataArraySize; i++)
+            //{
+            //    MessageBox.Show($"Дата: {dataArray[i, 0]}   Время: {dataArray[i, 1]}   Open: {dataArray[i, 2]}   Hight: {dataArray[i, 3]}   Low: {dataArray[i, 4]}   Close: {dataArray[i, 5]}   Spread: {dataArray[i, 6]}");
+            //}
+
 
             // Закройте книгу без сохранения изменений.
             workbook.Close(false, Type.Missing, Type.Missing);
@@ -71,11 +119,12 @@ namespace Forex
             // Закройте сервер Excel.
             excel_app.Quit();
 
-            string[] lines = File.ReadAllLines(@"C:\Users\andre\OneDrive\Рабочий стол\GBPUSD_M5.xlsx");
-            foreach (string s in lines)
-            {
-                MessageBox.Show(s);
-            }
+
+            //string[] lines = File.ReadAllLines(@"C:\Users\andre\OneDrive\Рабочий стол\GBPUSD_M5.xlsx");
+            //foreach (string s in lines)
+            //{
+            //    MessageBox.Show(s);
+            //}
         }
     }
 }
